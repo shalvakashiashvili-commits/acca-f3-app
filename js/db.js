@@ -28,7 +28,7 @@ let dbPromise = null;
 /** ბაზის გახსნა (ერთხელ) და საჭიროების შემთხვევაში ცხრილების შექმნა */
 export function openDB() {
   if (dbPromise) return dbPromise;
-  dbPromise = new Promise((resolve, reject) => {
+  const p = new Promise((resolve, reject) => {
     const req = indexedDB.open(DB_NAME, DB_VERSION);
 
     req.onupgradeneeded = (e) => {
@@ -69,13 +69,20 @@ export function openDB() {
     req.onsuccess = () => {
       const db = req.result;
       // თუ სხვა ჩანართმა ახალი ვერსია გახსნა, ეს კავშირი დავხუროთ
-      db.onversionchange = () => { db.close(); dbPromise = null; };
+      // (ან ბაზა იშლება — მაგ. სარეზერვო ასლის აღდგენა, „საიტის მონაცემების წაშლა“).
+      // შემდეგი მოთხოვნა ბაზას თავიდან გახსნის (იხ. tx).
+      db.onversionchange = () => { db.close(); if (dbPromise === p) dbPromise = null; };
+      // ბრაუზერმა თვითონ დახურა კავშირი (მაგ. მეხსიერების გასუფთავება)
+      db.onclose = () => { if (dbPromise === p) dbPromise = null; };
       resolve(db);
     };
     req.onerror = () => reject(req.error);
     req.onblocked = () => reject(new Error('ბაზა დაბლოკილია: დახურე აპლიკაციის სხვა ფანჯრები'));
   });
-  return dbPromise;
+  dbPromise = p;
+  // გახსნა ვერ მოხერხდა → შემდეგ ჯერზე თავიდან ვცდით
+  p.catch(() => { if (dbPromise === p) dbPromise = null; });
+  return p;
 }
 
 /** IDBRequest → Promise */
@@ -92,10 +99,21 @@ export function reqP(req) {
  * (reqP), სხვაგვარად ტრანზაქცია ავტომატურად დაიხურება.
  * Promise სრულდება მხოლოდ მაშინ, როცა ყველაფერი ჩაიწერა.
  */
-export async function tx(storeNames, mode, fn) {
+export async function tx(storeNames, mode, fn, retried = false) {
   const db = await openDB();
+  let t;
+  try {
+    t = db.transaction(storeNames, mode);
+  } catch (e) {
+    // „The database connection is closing“: კავშირი ამ წამს დაიხურა →
+    // ერთხელ ვხსნით თავიდან და ვიმეორებთ (წინა ეტაპის კონსოლის შეცდომა)
+    if (e.name === 'InvalidStateError' && !retried) {
+      dbPromise = null;
+      return tx(storeNames, mode, fn, true);
+    }
+    throw e;
+  }
   return new Promise((resolve, reject) => {
-    const t = db.transaction(storeNames, mode);
     let result;
     t.oncomplete = () => resolve(result);
     t.onerror = () => reject(t.error);

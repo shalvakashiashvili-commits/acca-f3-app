@@ -50,6 +50,7 @@ export async function renderChapter(el, { id }) {
       ${ch.title_en && ch.title_ka ? `<p class="t-en">${esc(ch.title_en)}</p>` : ''}
       <p>${statusBadge(st.status)} <small>${T.study.seenOf(st.seen, st.sectionsTotal)} · ${questions.length} ${T.chapters.questions}${st.scorePct != null ? ` · ${st.scorePct}%` : ''}</small></p>
       ${questions.length ? `<a class="btn primary block" href="#/practice?ch=${ch.id}">✎ ${T.study.practiceChapter}</a>` : ''}
+      ${(s.must_memorize?.length || ch.flashcards?.length) ? `<a class="btn block" href="#/cards?ch=${ch.id}">🎴 ${T.cards.title} (${(s.must_memorize?.length || 0) + (ch.flashcards?.length || 0)})</a>` : ''}
     </div>
 
     <section class="study-section" id="sec-pdf">

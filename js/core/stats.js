@@ -49,7 +49,9 @@ export function chapterStatus(ch, progress, questions, statsMap) {
   if (allSeen && answeredShare >= DONE_ANSWERED_SHARE && (seen > 0 || answered > 0)) status = 'done';
   else if (seen > 0 || answered > 0 || progress?.pdfOpened) status = 'progress';
 
-  return { status, scorePct, seen, sectionsTotal: sections.length, answered, total: questions.length };
+  // დაფარვა: ბოლო შედეგების ჯამი ყველა კითხვაზე (უპასუხო = 0) — მზადყოფნისთვის
+  const coveragePct = questions.length ? Math.round((sum / questions.length) * 100) : null;
+  return { status, scorePct, coveragePct, seen, sectionsTotal: sections.length, answered, total: questions.length };
 }
 
 /** ყველა თავი სტატუსით — თავების სიისთვის */

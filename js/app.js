@@ -21,6 +21,9 @@ import { renderMistakes } from './views/mistakes.js';
 import { renderExam } from './views/exam.js';
 import { renderExamRun } from './views/examrun.js';
 import { renderExamResult } from './views/examresult.js';
+import { renderCards } from './views/cards.js';
+import { renderMetro, renderMetroStart } from './views/metro.js';
+import { requestPersist } from './core/backup.js';
 
 /* ---------- მარშრუტები ---------- */
 route('/', renderChapters, { nav: 'home' });
@@ -31,6 +34,9 @@ route('/result/:id', renderResult, { nav: 'practice' });
 route('/exam', renderExam, { nav: 'practice' });
 route('/exam/run/:id', renderExamRun, { nav: 'practice' });
 route('/exam/result/:id', renderExamResult, { nav: 'practice' });
+route('/cards', renderCards, { nav: 'practice' });
+route('/metro', renderMetroStart, { nav: 'home' });
+route('/metro/:id', renderMetro, { nav: 'home' });
 route('/mistakes', renderMistakes, { nav: 'mistakes' });
 route('/pdf/:id', renderPdfViewer, { nav: 'library' });
 route('/library', renderLibrary, { nav: 'library' });
@@ -46,6 +52,10 @@ async function boot() {
   }
 
   applyTheme(await getSetting('theme'));
+  // პირველი გამოყენების თარიღი — სარეზერვო ასლის შეხსენებისთვის
+  if (!(await getSetting('firstUse'))) await setSetting('firstUse', Date.now());
+  // მუდმივი მეხსიერება: ბრაუზერი მონაცემებს თვითონ აღარ წაშლის (თუ დაადასტურა)
+  requestPersist();
   // სისტემური თემის ცვლილებაზე რეაგირება
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', async () => applyTheme(await getSetting('theme')));
 

@@ -49,6 +49,11 @@ export async function renderPractice(el, _params, query) {
       <span class="grow"><strong>${T.exam.cardTitle}</strong><small class="muted">${T.exam.cardText}</small></span>
       <span aria-hidden="true">›</span>
     </a>
+    <a class="card exam-entry" href="#/cards">
+      <span class="exam-ico" aria-hidden="true">🎴</span>
+      <span class="grow"><strong>${T.cards.entry}</strong><small class="muted">${T.cards.entryText}</small></span>
+      <span aria-hidden="true">›</span>
+    </a>
     ${pending.length ? `
       <div class="section-title">${T.practice.unfinished}</div>
       ${pending.map((p) => `

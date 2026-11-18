@@ -417,3 +417,57 @@ dialog.sheet h3 { margin-bottom: 12px; }
 .exam-row .grow { min-width: 0; }
 .exam-row .grow small { display: block; }
 .exam-row .badge { white-space: nowrap; }
+
+/* ---------- ეტაპი 4: დაშბორდი, ფლეშქარდები, მეტრო, სარეზერვო ასლი ---------- */
+.metro-btn {
+  display: flex; align-items: center; gap: 14px; width: 100%; margin: 0 0 14px;
+  padding: 16px 18px; border: 0; border-radius: var(--radius); cursor: pointer; text-align: left;
+  background: var(--primary); color: #fff; font: inherit; box-shadow: 0 6px 18px rgb(0 0 0 / .12);
+}
+.metro-btn .grow { display: flex; flex-direction: column; gap: 2px; }
+.metro-btn strong { font-size: 1.1rem; }
+.metro-btn small { opacity: .88; }
+.metro-btn .metro-ico { font-size: 1.9rem; }
+.metro-btn:active { transform: scale(.99); }
+.dash-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .dash-grid { grid-template-columns: 1fr 1fr; } }
+.dash-grid .card { margin: 0; }
+.dash-ready { display: flex; align-items: center; gap: 14px; }
+.dash-ready .grow { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+/* მზადყოფნის რგოლი: conic-gradient, --p = 0..100 */
+.ring {
+  --p: 0; flex: none; width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center;
+  background: conic-gradient(var(--primary) calc(var(--p) * 1%), var(--surface-2) 0);
+}
+.ring span { width: 60px; height: 60px; border-radius: 50%; background: var(--surface); display: grid; place-items: center; font-weight: 800; font-size: 1.15rem; }
+.dash-goal .goal-h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.dash-goal .bar > i.ok { background: var(--success); }
+.dash-goal .streak { margin-top: 8px; font-weight: 700; }
+.weak-row { text-decoration: none; color: inherit; }
+.reminder { display: flex; align-items: center; gap: 10px; }
+.reminder .grow { font-weight: 600; }
+.file-btn { margin-top: 10px; }
+.card .toggle-row { margin-top: 6px; }
+
+/* ფლეშქარდი */
+.flashcard {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  width: 100%; min-height: 260px; padding: 22px 18px; margin: 0 0 12px; cursor: pointer;
+  border: 1px solid var(--border); border-radius: calc(var(--radius) * 1.4); background: var(--surface);
+  color: var(--text); font: inherit; text-align: center; box-shadow: 0 4px 14px rgb(0 0 0 / .06);
+}
+.flashcard.flipped { background: var(--primary-soft); border-color: var(--primary); }
+.fc-meta { font-size: .78rem; color: var(--muted); }
+.fc-front { font-size: 1.3rem; font-weight: 800; line-height: 1.3; }
+.fc-sub { font-weight: 700; color: var(--primary); }
+.fc-back { font-size: 1rem; line-height: 1.5; text-align: left; }
+.fc-back p { margin: 0 0 6px; }
+.fc-formula { display: block; padding: 8px 10px; border-radius: 8px; background: var(--surface); font-size: .9rem; white-space: pre-wrap; text-align: left; }
+.fc-hint { font-size: .85rem; color: var(--muted); }
+.fc-rate .btn { flex: 1 1 0; font-size: 1.05rem; padding-block: 14px; }
+.btn.danger-soft { background: var(--danger-soft); color: var(--danger); border-color: var(--danger); }
+.btn.success-soft { background: var(--success-soft); color: var(--success); border-color: var(--success); }
+.card-counts { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 6px; }
+.card-counts div { display: flex; flex-direction: column; }
+.card-counts strong { font-size: 1.4rem; }
+.card-counts small { color: var(--muted); }

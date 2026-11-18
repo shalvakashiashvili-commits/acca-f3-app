@@ -52,7 +52,8 @@ export async function checkQuizQuestion(s, q) {
 
 /** სესიის დასრულება: ტესტში — ყველა კითხვის შეფასება და ჩაწერა */
 export async function finishSession(s, questions) {
-  if (s.type !== 'quiz') {
+  // ტესტი და გამოცდა: ყველაფერი ფასდება ბოლოს. ქვიზი და მეტრო: უკვე ჩაწერილია შემოწმებისას.
+  if (s.type === 'test' || s.type === 'exam') {
     const items = questions.map((q) => ({ q, result: gradeQuestion(q, s.answers[q.id]) }));
     items.forEach(({ q, result }) => { s.results[q.id] = slim(result); });
     await recordAnswers(items);
