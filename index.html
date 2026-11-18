@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8">
+  <!-- viewport-fit=cover: iPhone-ის „ჭრილის“ ქვეშაც გავრცელდეს ფონი -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ACCA F3</title>
+  <meta name="description" content="ACCA F3 / FA — პირადი სასწავლო აპლიკაცია, მუშაობს ინტერნეტის გარეშე">
+  <meta name="theme-color" content="#2457c5">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <!-- iOS: აპლიკაციის რეჟიმი და ხატულა -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ACCA F3">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+  <link rel="preload" href="fonts/noto-sans-georgian-georgian.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <!-- ზედა ზოლი: უკან ღილაკი, სათაური, თემის გადამრთველი -->
+  <header class="topbar">
+    <button class="icon-btn" id="btn-back" aria-label="უკან" hidden>
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <h1 id="page-title">ACCA F3</h1>
+    <button class="icon-btn" id="btn-theme" aria-label="თემის შეცვლა">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3z" fill="currentColor"/></svg>
+    </button>
+  </header>
+
+  <!-- აქ იხატება მიმდინარე ეკრანი (router) -->
+  <main id="view" tabindex="-1"></main>
+
+  <!-- ქვედა ნავიგაცია: ერთი ხელით სამართავად -->
+  <nav class="bottomnav" id="bottomnav" aria-label="მთავარი ნავიგაცია">
+    <a href="#/" data-nav="home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v14H4zM13 5h7v14h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span>თავები</span>
+    </a>
+    <a href="#/library" data-nav="library">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>ბიბლიოთეკა</span>
+    </a>
+    <a href="#/settings" data-nav="settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span>პარამეტრები</span>
+    </a>
+  </nav>
+
+  <div id="toast-root" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

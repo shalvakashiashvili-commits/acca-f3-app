@@ -1,0 +1,299 @@
+{
+  "chapter": {
+    "id": 99,
+    "title_en": "DEMO — Accruals and prepayments",
+    "title_ka": "DEMO — დარიცხვები და წინასწარ გადახდები",
+    "pdf_pages": { "book": [1, 4], "kit": [1, 2] }
+  },
+  "summary": {
+    "short_ka": "ეს სადემო თავია აპლიკაციის შესამოწმებლად.\n\nდარიცხვის (accruals) პრინციპის თანახმად, შემოსავალი და ხარჯი აღიარდება იმ პერიოდში, რომელსაც ეკუთვნის, და არა მაშინ, როცა ფული გადაიხადეს ან მიიღეს. ამიტომ პერიოდის ბოლოს საჭიროა კორექტირება: **accrual** — ხარჯი გაწეულია, მაგრამ ჯერ არ არის გადახდილი; **prepayment** — თანხა გადახდილია, მაგრამ მომავალ პერიოდს ეკუთვნის.",
+    "key_points_ka": [
+      "Accrual (დარიცხული ხარჯი) — მიმდინარე ვალდებულება; ზრდის პერიოდის ხარჯს.",
+      "Prepayment (წინასწარ გადახდილი ხარჯი) — მიმდინარე აქტივი; ამცირებს პერიოდის ხარჯს.",
+      "Accrued income (დარიცხული შემოსავალი) — მიმდინარე აქტივი: შემოსავალი გამომუშავებულია, ფული ჯერ არ მიგვიღია.",
+      "Deferred income (წინასწარ მიღებული შემოსავალი) — მიმდინარე ვალდებულება.",
+      "მომდევნო პერიოდის დასაწყისში ნაშთი უკან ბრუნდება (reverses) ხარჯის ან შემოსავლის ანგარიშში."
+    ],
+    "must_memorize": [
+      {
+        "term_en": "Accrual",
+        "term_ka": "დარიცხული ხარჯი",
+        "definition_ka": "პერიოდში გაწეული ხარჯი, რომელიც პერიოდის ბოლოსთვის ჯერ არ არის გადახდილი (ხშირად ინვოისიც არ არის მიღებული).",
+        "formula": "Dr Expense   /   Cr Accruals (current liability)"
+      },
+      {
+        "term_en": "Prepayment",
+        "term_ka": "წინასწარ გადახდილი ხარჯი",
+        "definition_ka": "პერიოდში გადახდილი თანხა, რომელიც შემდეგ პერიოდ(ებ)ს ეკუთვნის.",
+        "formula": "Dr Prepayments (current asset)   /   Cr Expense"
+      },
+      {
+        "term_en": "Accrued income",
+        "term_ka": "დარიცხული შემოსავალი",
+        "definition_ka": "გამომუშავებული შემოსავალი, რომლის ფულიც პერიოდის ბოლოსთვის ჯერ არ არის მიღებული.",
+        "formula": "Dr Accrued income (current asset)   /   Cr Income"
+      },
+      {
+        "term_en": "Deferred income",
+        "term_ka": "წინასწარ მიღებული შემოსავალი",
+        "definition_ka": "მიღებული ფული იმ შემოსავლისთვის, რომელიც შემდეგ პერიოდში გამომუშავდება.",
+        "formula": "Dr Income   /   Cr Deferred income (current liability)"
+      },
+      {
+        "term_en": "Expense for the year",
+        "term_ka": "წლის ხარჯი მოგება-ზარალში",
+        "definition_ka": "გადახდილ თანხას ვაკორექტირებთ გახსნისა და დახურვის ნაშთებით.",
+        "formula": "Expense = Cash paid − Opening accrual + Closing accrual + Opening prepayment − Closing prepayment"
+      }
+    ],
+    "simple_explanation_ka": "წარმოიდგინე, რომ ბინის ქირას 1 ოქტომბერს წინასწარ იხდი მთელი წლისთვის, შენი წელი კი 31 დეკემბერს მთავრდება. ამ წელს ბინაში მხოლოდ 3 თვე იცხოვრე, ამიტომ წლის ხარჯი მხოლოდ 3 თვის ქირაა. დანარჩენი 9 თვე ჯერ „გამოსაყენებელია“ — ეს შენი აქტივია (prepayment).\n\nპირიქით: დეკემბერში შუქი მოიხმარე, ქვითარი კი იანვარში მოვა. ხარჯი დეკემბერს ეკუთვნის, ამიტომ ახლავე ვწერთ ხარჯს და ვალდებულებას (accrual).",
+    "exam_tips_ka": [
+      "თვეები ყოველთვის ზუსტად დაითვალე: ერთი თვის შეცდომა მთელ პასუხს აფუჭებს.",
+      "ხშირი შეცდომა: accrual-ისა და prepayment-ის აღრევა აქტივსა და ვალდებულებას შორის.",
+      "ხარჯის T-ანგარიშში გახსნის accrual კრედიტზეა (b/d), გახსნის prepayment — დებეტზე.",
+      "შემოსავლის კითხვებში ფორმულა „სარკისებურია“: წინასწარ მიღებული შემოსავალი ვალდებულებაა."
+    ]
+  },
+  "case_study": {
+    "title_ka": "შპს „მზიური“ — ქირა და ელექტროენერგია",
+    "scenario_ka": "შპს „მზიურის“ ფინანსური წელი მთავრდება 2025 წლის 31 დეკემბერს.\n\n- 2025 წლის 1 ოქტომბერს კომპანიამ ოფისის 12 თვის ქირა წინასწარ გადაიხადა: 24 000 ლარი (დღგ-ს გარეშე; დღგ ცალკე აღირიცხება ჩასათვლელად).\n- დეკემბრის ელექტროენერგიის ინვოისი, 1 800 ლარი (დღგ-ს გარეშე), კომპანიამ 2026 წლის იანვარში მიიღო.",
+    "tasks_ka": [
+      "გამოთვალე ქირის ხარჯი 2025 წლის მოგება-ზარალის ანგარიშგებაში და წინასწარ გადახდილი ქირა 31 დეკემბრისთვის.",
+      "განსაზღვრე ელექტროენერგიის დარიცხული ხარჯი.",
+      "ჩაწერე საბუღალტრო გატარებები."
+    ],
+    "solution_ka": "1. თვიური ქირა = 24 000 / 12 = 2 000 ლარი. 2025 წელს ეკუთვნის ოქტომბერი–დეკემბერი, ანუ 3 თვე: ხარჯი = 6 000 ლარი. დარჩენილი 9 თვე (2026 წლის იანვარი–სექტემბერი) = 18 000 ლარი — წინასწარ გადახდილი ხარჯი (მიმდინარე აქტივი).\n\n2. დეკემბრის ელექტროენერგია 2025 წლის ხარჯია, მიუხედავად იმისა, რომ ინვოისი იანვარში მოვიდა: დარიცხული ხარჯი = 1 800 ლარი (მიმდინარე ვალდებულება).\n\n3. გატარებები იხილე ცხრილში. საბოლოოდ მოგება-ზარალში: ქირა 6 000, ელექტროენერგია +1 800.",
+    "journal_entries": [
+      { "dr": "Rent expense", "cr": "Bank", "amount": 24000, "note_ka": "1 ოქტომბერი: ქირის გადახდა" },
+      { "dr": "Prepayments", "cr": "Rent expense", "amount": 18000, "note_ka": "31 დეკემბერი: 9 თვე მომდევნო წელს ეკუთვნის" },
+      { "dr": "Electricity expense", "cr": "Accruals", "amount": 1800, "note_ka": "31 დეკემბერი: დეკემბრის მოხმარება" }
+    ]
+  },
+  "flashcards": [
+    { "front": "Prepayment — აქტივია თუ ვალდებულება?", "back": "მიმდინარე აქტივი (current asset). თანხა გადახდილია, მომსახურება მომავალში მივიღებთ." },
+    { "front": "Accrual — აქტივია თუ ვალდებულება?", "back": "მიმდინარე ვალდებულება (current liability). ხარჯი გაწეულია, ჯერ არ გადაგვიხდია." },
+    { "front": "Income received in advance", "back": "Deferred income — მიმდინარე ვალდებულება." },
+    { "front": "რომელი კონცეფცია მოითხოვს accrual/prepayment-ის კორექტირებას?", "back": "Accruals (matching) კონცეფცია: ხარჯი და შემოსავალი იმ პერიოდში, რომელსაც ეკუთვნის." }
+  ],
+  "questions": [
+    {
+      "id": "demo-app-001",
+      "source": "app",
+      "type": "mcq",
+      "difficulty": 1,
+      "question_en": "At 31 December 20X5 a business has used $400 of electricity in December for which no invoice has yet been received. How should this be treated in the financial statements for the year ended 31 December 20X5?",
+      "options": [
+        "As a prepayment (current asset)",
+        "As an accrual (current liability)",
+        "As accrued income (current asset)",
+        "No adjustment until the invoice is received"
+      ],
+      "correct": [1],
+      "marks": 2,
+      "explanation_ka": "ელექტროენერგია დეკემბერში მოიხმარეს, ამიტომ ხარჯი 20X5 წელს ეკუთვნის. ფული ჯერ არ გადაუხდიათ — ეს დარიცხული ხარჯია (accrual), ანუ მიმდინარე ვალდებულება.",
+      "why_wrong_ka": [
+        "Prepayment არის წინასწარ გადახდილი თანხა — აქ ჯერ არაფერი გადაუხდიათ.",
+        "",
+        "Accrued income შემოსავალს ეხება, აქ კი ხარჯზეა საუბარი.",
+        "დარიცხვის პრინციპით ხარჯი აღიარდება მოხმარების პერიოდში, ინვოისის მიღების მიუხედავად."
+      ]
+    },
+    {
+      "id": "demo-app-002",
+      "source": "app",
+      "type": "numeric",
+      "difficulty": 2,
+      "question_en": "A business paid annual rent of $12,000 in advance on 1 April 20X5 for the twelve months to 31 March 20X6. Its year end is 31 December 20X5. What is the rent prepayment at 31 December 20X5 ($)?",
+      "correct": [3000],
+      "marks": 2,
+      "explanation_ka": "თვიური ქირა = 12 000 / 12 = 1 000. 31 დეკემბრის შემდეგ დარჩა იანვარი–მარტი 20X6, ანუ 3 თვე: 3 × 1 000 = 3 000."
+    },
+    {
+      "id": "demo-app-003",
+      "source": "app",
+      "type": "numeric",
+      "difficulty": 2,
+      "question_en": "At the start of the year there was an electricity accrual of $300. During the year $2,400 was paid for electricity. At the year end the electricity accrual is $500. What is the electricity expense for the year ($)?",
+      "correct": [2600],
+      "marks": 2,
+      "explanation_ka": "ხარჯი = გადახდილი − გახსნის accrual + დახურვის accrual = 2 400 − 300 + 500 = 2 600. გახსნის accrual წინა წლის ხარჯი იყო, ამიტომ აკლდება."
+    },
+    {
+      "id": "demo-app-004",
+      "source": "app",
+      "type": "multi",
+      "difficulty": 2,
+      "question_en": "Which TWO of the following are current liabilities?",
+      "options": ["Accruals", "Prepayments", "Deferred income", "Accrued income"],
+      "correct": [0, 2],
+      "marks": 2,
+      "explanation_ka": "Accruals (გადასახდელი ხარჯი) და deferred income (წინასწარ მიღებული შემოსავალი) ვალდებულებებია. Prepayments და accrued income აქტივებია.",
+      "why_wrong_ka": [
+        "",
+        "Prepayment მიმდინარე აქტივია — მომსახურება მომავალში მივიღებთ.",
+        "",
+        "Accrued income მიმდინარე აქტივია — ფული ჯერ უნდა მივიღოთ."
+      ]
+    },
+    {
+      "id": "demo-app-005",
+      "source": "app",
+      "type": "fill",
+      "difficulty": 1,
+      "question_en": "Income received in advance is shown in the statement of financial position as ________ income. (one word)",
+      "correct": ["deferred"],
+      "marks": 2,
+      "explanation_ka": "წინასწარ მიღებული შემოსავალი = deferred income, მიმდინარე ვალდებულება."
+    },
+    {
+      "id": "demo-kit-001",
+      "source": "kit",
+      "kit_ref": "DEMO-1",
+      "type": "mcq",
+      "difficulty": 2,
+      "question_en": "At 1 January 20X5 an insurance prepayment of $1,500 existed. During 20X5 $8,000 was paid for insurance. At 31 December 20X5 the insurance prepayment is $2,000. What is the insurance expense for 20X5?",
+      "options": ["$7,500", "$8,500", "$6,500", "$9,500"],
+      "correct": [0],
+      "marks": 2,
+      "explanation_ka": "ხარჯი = გადახდილი + გახსნის prepayment − დახურვის prepayment = 8 000 + 1 500 − 2 000 = 7 500.",
+      "why_wrong_ka": [
+        "",
+        "8 000 + 2 000 − 1 500: გახსნისა და დახურვის ნაშთები პირიქით არის გამოყენებული.",
+        "8 000 − 1 500: გახსნის prepayment აკლდება (უნდა ემატებოდეს) და დახურვის ნაშთი გამოტოვებულია.",
+        "8 000 + 1 500: დახურვის prepayment (2 000) არ არის გამოკლებული."
+      ]
+    },
+    {
+      "id": "demo-kit-002",
+      "source": "kit",
+      "kit_ref": "DEMO-2",
+      "type": "mcq",
+      "difficulty": 1,
+      "question_en": "Which accounting concept requires adjustments for accruals and prepayments?",
+      "options": ["Going concern", "Accruals (matching)", "Prudence", "Consistency"],
+      "correct": [1],
+      "marks": 2,
+      "explanation_ka": "Accruals (matching) კონცეფცია მოითხოვს, რომ ხარჯი და შემოსავალი აღიარდეს იმ პერიოდში, რომელსაც ეკუთვნის.",
+      "why_wrong_ka": [
+        "Going concern ნიშნავს, რომ ბიზნესი უახლოეს მომავალში გააგრძელებს საქმიანობას.",
+        "",
+        "Prudence (სიფრთხილე) ეხება შეფასებებს განუსაზღვრელობის პირობებში.",
+        "Consistency ნიშნავს ერთი და იმავე მეთოდის გამოყენებას პერიოდიდან პერიოდამდე."
+      ]
+    },
+    {
+      "id": "demo-kit-003",
+      "source": "kit",
+      "kit_ref": "DEMO-3",
+      "type": "numeric",
+      "difficulty": 3,
+      "question_en": "A landlord received $18,000 of rent during the year ended 31 December 20X5. At 1 January 20X5 rent received in advance was $2,000 and at 31 December 20X5 rent received in advance was $3,000. What is the rental income for the year ($)?",
+      "correct": [17000],
+      "marks": 2,
+      "explanation_ka": "შემოსავალი = მიღებული + გახსნის deferred income − დახურვის deferred income = 18 000 + 2 000 − 3 000 = 17 000. გახსნის ნაშთი ამ წელს გამომუშავდა, დახურვისა — მომავალ წელს ეკუთვნის."
+    },
+    {
+      "id": "demo-app-mtq-001",
+      "source": "app",
+      "type": "mtq",
+      "difficulty": 2,
+      "question_en": "Lemon Co prepares financial statements for the year ended 30 June 20X6. Rent of $3,000 is paid quarterly in advance on 1 March, 1 June, 1 September and 1 December, each payment covering the following three months. The last electricity bill paid covered the period up to 31 May 20X6. The bill for June to August 20X6, of $2,700, was received in September 20X6.",
+      "parts": [
+        {
+          "type": "numeric",
+          "question_en": "What is the rent prepayment at 30 June 20X6 ($)?",
+          "correct": [2000],
+          "marks": 4,
+          "explanation_ka": "1 ივნისის გადახდა (3 000) ფარავს ივნისს, ივლისს და აგვისტოს. თვეში 1 000. 30 ივნისის შემდეგ დარჩა ივლისი და აგვისტო: 2 × 1 000 = 2 000."
+        },
+        {
+          "type": "numeric",
+          "question_en": "What is the electricity accrual at 30 June 20X6 ($)?",
+          "correct": [900],
+          "marks": 4,
+          "explanation_ka": "ივნისი–აგვისტოს ინვოისი 2 700 = 3 თვე, თვეში 900. წელს ეკუთვნის მხოლოდ ივნისი: 900."
+        },
+        {
+          "type": "mcq",
+          "question_en": "Which is the correct double entry to record the electricity accrual?",
+          "options": [
+            "Dr Electricity expense, Cr Accruals",
+            "Dr Accruals, Cr Electricity expense",
+            "Dr Electricity expense, Cr Bank",
+            "Dr Prepayments, Cr Electricity expense"
+          ],
+          "correct": [0],
+          "marks": 3,
+          "explanation_ka": "ხარჯი იზრდება (დებეტი), იქმნება ვალდებულება (კრედიტი Accruals). ფული ჯერ არ გადაუხდიათ, ამიტომ Bank არ მონაწილეობს.",
+          "why_wrong_ka": [
+            "",
+            "ეს შებრუნებული გატარებაა — ასე ბრუნდება accrual მომდევნო წლის დასაწყისში.",
+            "ფული ჯერ არ გადაუხდიათ.",
+            "ეს წინასწარ გადახდილი ხარჯის გატარებაა."
+          ]
+        },
+        {
+          "type": "multi",
+          "question_en": "Which TWO statements about Lemon Co's statement of financial position at 30 June 20X6 are correct?",
+          "options": [
+            "Current assets include a prepayment of $2,000",
+            "Current liabilities include an accrual of $900",
+            "Current liabilities include a prepayment of $2,000",
+            "Current assets include an accrual of $900"
+          ],
+          "correct": [0, 1],
+          "marks": 4,
+          "explanation_ka": "Prepayment მიმდინარე აქტივია, accrual — მიმდინარე ვალდებულება.",
+          "why_wrong_ka": ["", "", "Prepayment აქტივია და არა ვალდებულება.", "Accrual ვალდებულებაა და არა აქტივი."]
+        }
+      ],
+      "marks": 15,
+      "explanation_ka": "ამოცანაში შემოწმებულია დროის მიხედვით განაწილება (თვეების დათვლა) და აქტივისა და ვალდებულების სწორად განსაზღვრა."
+    },
+    {
+      "id": "demo-kit-mtq-001",
+      "source": "kit",
+      "kit_ref": "DEMO-4",
+      "type": "mtq",
+      "difficulty": 3,
+      "question_en": "Ivy Co has a year end of 31 December 20X5. At 1 January 20X5 there was an insurance prepayment of $600. On 1 April 20X5 Ivy Co paid $4,800 for insurance for the twelve months to 31 March 20X6.",
+      "parts": [
+        {
+          "type": "numeric",
+          "question_en": "What is the insurance prepayment at 31 December 20X5 ($)?",
+          "correct": [1200],
+          "marks": 5,
+          "explanation_ka": "თვეში 4 800 / 12 = 400. 31 დეკემბრის შემდეგ დარჩა იანვარი–მარტი 20X6: 3 × 400 = 1 200."
+        },
+        {
+          "type": "numeric",
+          "question_en": "What is the insurance expense for the year ended 31 December 20X5 ($)?",
+          "correct": [4200],
+          "marks": 5,
+          "explanation_ka": "ხარჯი = გახსნის prepayment + გადახდილი − დახურვის prepayment = 600 + 4 800 − 1 200 = 4 200."
+        },
+        {
+          "type": "mcq",
+          "question_en": "In the insurance ledger account for 20X5, where does the closing prepayment appear?",
+          "options": [
+            "As a balance carried down (c/d) on the credit side",
+            "As a balance carried down (c/d) on the debit side",
+            "As a balance brought down (b/d) on the credit side",
+            "It does not appear in the insurance account"
+          ],
+          "correct": [0],
+          "marks": 5,
+          "explanation_ka": "Prepayment დებეტური (აქტივის) ნაშთია. ანგარიშის დასაბალანსებლად c/d იწერება კრედიტზე, ხოლო მომდევნო წლის დასაწყისში b/d — დებეტზე.",
+          "why_wrong_ka": [
+            "",
+            "დებეტზე c/d იწერება კრედიტული ნაშთის (მაგ. accrual-ის) შემთხვევაში.",
+            "b/d კრედიტზე იქნებოდა accrual, თანაც მომდევნო წლის დასაწყისში.",
+            "დახურვის prepayment ხარჯის ანგარიშში აუცილებლად ჩანს."
+          ]
+        }
+      ],
+      "marks": 15,
+      "explanation_ka": "ამოცანაში შემოწმებულია prepayment-ის გამოთვლა და მისი ასახვა T-ანგარიშში."
+    }
+  ]
+}

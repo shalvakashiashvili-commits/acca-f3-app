@@ -1,0 +1,106 @@
+/* =========================================================
+   დიზაინის ტოკენები: შრიფტი, ფერები, ზომები.
+   ფერის შესაცვლელად საკმარისია აქ შეცვლა — დანარჩენი CSS
+   მხოლოდ ამ ცვლადებს იყენებს.
+   ========================================================= */
+
+/* Noto Sans Georgian (ცვლადი სისქე 100–900), ლოკალურად.
+   ორი ფაილი: ქართული ასოები და ლათინური (ინგლისური კითხვებისთვის). */
+@font-face {
+  font-family: "Noto Sans Georgian";
+  src: url("../fonts/noto-sans-georgian-georgian.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0589, U+10A0-10FF, U+1C90-1CBA, U+1CBD-1CBF, U+205A, U+2D00-2D2F, U+2E31;
+}
+@font-face {
+  font-family: "Noto Sans Georgian";
+  src: url("../fonts/noto-sans-georgian-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --font: "Noto Sans Georgian", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* ზომები */
+  --fs-base: 17px;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --tap: 52px;            /* ღილაკის მინიმალური სიმაღლე */
+  --gutter: 16px;
+  --topbar-h: 56px;
+  --nav-h: 64px;
+
+  /* ღია თემა */
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #eef1f5;
+  --text: #1a1d23;
+  --muted: #5b6472;
+  --border: #dde2e9;
+  --primary: #2457c5;
+  --primary-ink: #ffffff;
+  --primary-soft: #e6edfb;
+  --success: #1d7f46;
+  --success-soft: #e3f4ea;
+  --danger: #c22f2f;
+  --danger-soft: #fbe7e7;
+  --warning: #9a5b00;
+  --warning-soft: #fff2d9;
+  --memo-bg: #fff7dc;     /* „აუცილებლად დასამახსოვრებელი“ ბლოკი */
+  --memo-border: #e0ad00;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 2px 8px rgba(16, 24, 40, .06);
+  color-scheme: light;
+}
+
+/* მუქი თემა: ა) სისტემის მიხედვით, თუ ხელით ღია არ არის არჩეული */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1216;
+    --surface: #181c22;
+    --surface-2: #222831;
+    --text: #e8ebf0;
+    --muted: #9aa3b2;
+    --border: #2e353f;
+    --primary: #7ea4ff;
+    --primary-ink: #0b1020;
+    --primary-soft: #1d2a47;
+    --success: #4cc584;
+    --success-soft: #15301f;
+    --danger: #ff7b7b;
+    --danger-soft: #3a1a1a;
+    --warning: #f0b450;
+    --warning-soft: #33270f;
+    --memo-bg: #2b2510;
+    --memo-border: #c99a1a;
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+/* ბ) ხელით არჩეული მუქი თემა */
+:root[data-theme="dark"] {
+  --bg: #0f1216;
+  --surface: #181c22;
+  --surface-2: #222831;
+  --text: #e8ebf0;
+  --muted: #9aa3b2;
+  --border: #2e353f;
+  --primary: #7ea4ff;
+  --primary-ink: #0b1020;
+  --primary-soft: #1d2a47;
+  --success: #4cc584;
+  --success-soft: #15301f;
+  --danger: #ff7b7b;
+  --danger-soft: #3a1a1a;
+  --warning: #f0b450;
+  --warning-soft: #33270f;
+  --memo-bg: #2b2510;
+  --memo-border: #c99a1a;
+  --shadow: none;
+  color-scheme: dark;
+}
