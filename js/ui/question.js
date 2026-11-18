@@ -22,15 +22,15 @@ export function sourceBadge(q) {
 
 /**
  * კითხვის HTML.
- * opts: { review: bool, result: { earned, max, correct, parts? } }
+ * opts: { review: bool, result: { earned, max, correct, parts? }, marks?: გამოცდაში ნაჩვენები ქულა }
  */
 export function questionHtml(q, answer, opts = {}) {
-  const { review = false, result = null } = opts;
+  const { review = false, result = null, marks = null } = opts;
   const head = `
     <div class="q-meta">
       ${sourceBadge(q)}
       <span>${T.chapters.chapter} ${q.chapterId}</span>
-      <span>${maxMarks(q)} ${T.quiz.marks}</span>
+      <span>${marks ?? maxMarks(q)} ${T.quiz.marks}</span>
       ${review && result ? resultBadge(result) : ''}
     </div>
     <div class="q-text" lang="en">${richText(q.question_en)}</div>`;

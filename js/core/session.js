@@ -11,6 +11,7 @@
    - ქვიზი: პასუხი მოწმდება და ბანკში იწერება მაშინვე („შემოწმება“).
    - ტესტი: ყველაფერი მოწმდება და იწერება „დასრულებისას“;
      უპასუხო კითხვა = 0 ქულა და შედის შეცდომების ბანკში.
+   - გამოცდა (type: 'exam'): როგორც ტესტი, შედეგი — summarizeExam (core/exam.js).
    - დაუსრულებელი სესია ინახება და შეიძლება გაგრძელდეს.
    ========================================================= */
 
@@ -18,11 +19,13 @@ import { S, get, put, del, getAll, getAllByIndex } from '../db.js';
 import { now } from './clock.js';
 import { gradeQuestion, maxMarks } from './scoring.js';
 import { recordAnswers } from './mistakes.js';
+import { summarizeExam } from './exam.js';
 
-export async function createSession(type, filters, questionIds) {
+export async function createSession(type, filters, questionIds, extra = {}) {
   const s = {
     type, state: 'in_progress', filters, questionIds, index: 0,
     answers: {}, results: {}, startedAt: now(), finishedAt: null, elapsedMs: 0,
+    ...extra, // გამოცდა: plan, sections, durationMs, strict, flags, pauses…
   };
   s.id = await put(S.sessions, s);
   return s;
@@ -54,7 +57,7 @@ export async function finishSession(s, questions) {
     items.forEach(({ q, result }) => { s.results[q.id] = slim(result); });
     await recordAnswers(items);
   }
-  s.summary = summarize(s, questions);
+  s.summary = s.type === 'exam' ? summarizeExam(s, questions) : summarize(s, questions);
   s.state = 'done';
   s.finishedAt = now();
   await saveSession(s);

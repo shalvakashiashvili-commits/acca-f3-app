@@ -20,6 +20,12 @@ export function shiftDays(n) {
   return new Date(now()).toString();
 }
 
+/** დროის გადაწევა n მილიწამით (ტაიმერის ტესტირებისთვის, მაგ. shiftMs(30*60000)) */
+export function shiftMs(n) {
+  offsetMs += n;
+  return new Date(now()).toString();
+}
+
 export function resetClock() {
   offsetMs = 0;
 }

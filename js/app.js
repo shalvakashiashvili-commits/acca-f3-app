@@ -18,6 +18,9 @@ import { renderPractice } from './views/practice.js';
 import { renderRun } from './views/run.js';
 import { renderResult } from './views/result.js';
 import { renderMistakes } from './views/mistakes.js';
+import { renderExam } from './views/exam.js';
+import { renderExamRun } from './views/examrun.js';
+import { renderExamResult } from './views/examresult.js';
 
 /* ---------- მარშრუტები ---------- */
 route('/', renderChapters, { nav: 'home' });
@@ -25,6 +28,9 @@ route('/chapter/:id', renderChapter, { nav: 'home' });
 route('/practice', renderPractice, { nav: 'practice' });
 route('/run/:id', renderRun, { nav: 'practice' });
 route('/result/:id', renderResult, { nav: 'practice' });
+route('/exam', renderExam, { nav: 'practice' });
+route('/exam/run/:id', renderExamRun, { nav: 'practice' });
+route('/exam/result/:id', renderExamResult, { nav: 'practice' });
 route('/mistakes', renderMistakes, { nav: 'mistakes' });
 route('/pdf/:id', renderPdfViewer, { nav: 'library' });
 route('/library', renderLibrary, { nav: 'library' });

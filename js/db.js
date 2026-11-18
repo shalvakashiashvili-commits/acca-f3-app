@@ -141,6 +141,9 @@ export const DEFAULT_SETTINGS = {
   theme: 'system',            // system | light | dark
   mistakeShare: 30,           // ქვიზში/ტესტში შეცდომების მინიმალური % (ეტაპი 2)
   dailyGoal: 20,              // დღიური მიზანი: კითხვების რაოდენობა (ეტაპი 4)
+  // გამოცდის ფორმატი (ეტაპი 3). მინი-გამოცდა = ნახევარი (იხ. core/exam.js → examPlan)
+  exam: { aCount: 35, aMarks: 2, bCount: 2, bMarks: 15, minutes: 120, passPct: 50 },
+  examStrict: false,          // true = ტაიმერი არ ჩერდება აპლიკაციის დახურვისას
 };
 
 export async function getSetting(key) {
