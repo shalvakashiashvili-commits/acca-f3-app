@@ -7,7 +7,7 @@
    და გაზარდე VERSION — სხვაგვარად ტელეფონი ძველ ვერსიას დაიტოვებს.
    ========================================================= */
 
-const VERSION = 'v1.0.0';
+const VERSION = 'v1.0.1';
 const CACHE = `acca-f3-${VERSION}`;
 
 const ASSETS = [

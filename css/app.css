@@ -422,11 +422,12 @@ dialog.sheet h3 { margin-bottom: 12px; }
 .metro-btn {
   display: flex; align-items: center; gap: 14px; width: 100%; margin: 0 0 14px;
   padding: 16px 18px; border: 0; border-radius: var(--radius); cursor: pointer; text-align: left;
-  background: var(--primary); color: #fff; font: inherit; box-shadow: 0 6px 18px rgb(0 0 0 / .12);
+  background: var(--primary); color: var(--primary-ink); font: inherit; box-shadow: 0 6px 18px rgb(0 0 0 / .12);
 }
 .metro-btn .grow { display: flex; flex-direction: column; gap: 2px; }
 .metro-btn strong { font-size: 1.1rem; }
-.metro-btn small { opacity: .88; }
+/* ქვედა სტრიქონი — იგივე ფერი, რაც სათაურს (ზოგადი „small“ წესი აქ ნაცრისფერს აძლევდა) */
+.metro-btn small { color: inherit; font-weight: 600; }
 .metro-btn .metro-ico { font-size: 1.9rem; }
 .metro-btn:active { transform: scale(.99); }
 .dash-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
@@ -471,3 +472,5 @@ dialog.sheet h3 { margin-bottom: 12px; }
 .card-counts div { display: flex; flex-direction: column; }
 .card-counts strong { font-size: 1.4rem; }
 .card-counts small { color: var(--muted); }
+/* ფერად (primary) ღილაკებში დამხმარე ტექსტი ღილაკის ფერს იღებს და არა ნაცრისფერს */
+.btn.primary small, .btn.primary .muted, .metro-btn .muted { color: inherit; }
