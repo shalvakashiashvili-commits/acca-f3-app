@@ -66,8 +66,9 @@ main {
   border-top: 1px solid var(--border);
 }
 .bottomnav a {
-  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 2px; font-size: .74rem; color: var(--muted); text-decoration: none;
+  flex: 1 1 auto; display: flex; /* სიგანე ტექსტის მიხედვით — 5 ღილაკი 360px-ზე ეტევა */ flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; font-size: .68rem; color: var(--muted); text-decoration: none;
+  min-width: 0; white-space: nowrap;
 }
 .bottomnav svg { width: 24px; height: 24px; }
 .bottomnav a.active { color: var(--primary); font-weight: 700; }
@@ -279,6 +280,89 @@ dialog.sheet h3 { margin-bottom: 12px; }
 .toast.error { background: var(--danger); color: #fff; }
 .toast .btn { margin-left: 10px; min-height: 36px; padding: 4px 12px; }
 @keyframes toast-in { from { transform: translateY(10px); opacity: 0; } }
+
+/* ---------- ვარჯიში: ფილტრები ---------- */
+.chip-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip.on { background: var(--primary); border-color: var(--primary); color: var(--primary-ink); }
+.segmented button:disabled { opacity: .4; }
+.hint { margin: 8px 2px 0; }
+.toggle-row { display: flex; align-items: center; gap: 12px; margin-top: 18px; font-weight: 600; cursor: pointer; }
+.toggle-row input { width: 24px; height: 24px; accent-color: var(--primary); flex: none; }
+.pool-info { font-size: .92rem; color: var(--muted); margin: 14px 2px; }
+.resume { display: flex; align-items: center; gap: 8px; padding: 10px 14px; }
+
+/* ---------- კითხვა ---------- */
+.run-top { margin-bottom: 10px; }
+.progress-line { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; font-size: .92rem; color: var(--muted); }
+.progress-line strong { color: var(--text); font-size: 1rem; }
+.progress-line #clock { margin-left: auto; font-variant-numeric: tabular-nums; }
+.navgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 6px; margin-bottom: 12px; }
+.navgrid button {
+  min-height: 40px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text); font: inherit; font-size: .88rem; font-weight: 700; cursor: pointer;
+}
+.navgrid button.ans { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
+.navgrid button.part { background: var(--warning-soft); border-color: var(--warning); color: var(--warning); }
+.navgrid button.cur { outline: 3px solid var(--primary); outline-offset: 1px; }
+
+.q-card { position: relative; }
+.q-num { position: absolute; top: 12px; right: 14px; font-size: .8rem; color: var(--muted); font-weight: 700; }
+.q-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: .82rem; color: var(--muted); margin-bottom: 10px; padding-right: 30px; }
+.q-text { font-size: 1.02rem; line-height: 1.6; margin-bottom: 12px; }
+.q-part { border-top: 1px solid var(--border); padding-top: 12px; margin-top: 12px; }
+.q-part-h { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; font-size: .9rem; color: var(--primary); margin-bottom: 6px; }
+
+.opts { display: flex; flex-direction: column; gap: 10px; }
+.opt {
+  display: flex; align-items: flex-start; gap: 12px; width: 100%; min-height: var(--tap);
+  padding: 12px 14px; text-align: left; cursor: pointer;
+  border: 2px solid var(--border); border-radius: var(--radius); background: var(--surface);
+  color: var(--text); font: inherit; line-height: 1.45;
+}
+.opt .letter {
+  flex: none; display: grid; place-items: center; width: 30px; height: 30px;
+  border-radius: 50%; background: var(--surface-2); font-size: .9rem;
+}
+.opt.multi .letter { border-radius: 7px; }
+.opt .otext { flex: 1; padding-top: 3px; }
+.opt.sel { border-color: var(--primary); background: var(--primary-soft); }
+.opt.sel .letter { background: var(--primary); color: var(--primary-ink); }
+.opt:disabled { cursor: default; opacity: 1; }
+.opt.right { border-color: var(--success); background: var(--success-soft); }
+.opt.right .letter { background: var(--success); color: #fff; }
+.opt.missed { border-color: var(--success); border-style: dashed; }
+.opt.wrong { border-color: var(--danger); background: var(--danger-soft); }
+.opt.wrong .letter { background: var(--danger); color: #fff; }
+.why { display: block; margin-top: 6px; font-size: .86rem; color: var(--muted); }
+.opt.wrong .why { color: var(--danger); }
+
+.ans-field input { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.ans-review { display: grid; gap: 4px; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--surface-2); }
+.ok-text { color: var(--success); }
+.bad-text { color: var(--danger); }
+.badge.wrong { background: var(--danger-soft); color: var(--danger); }
+
+.explain { margin-top: 12px; padding: 12px 14px; border-left: 4px solid var(--primary); background: var(--primary-soft); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.explain-h { font-weight: 700; font-size: .85rem; color: var(--primary); margin-bottom: 4px; }
+.explain p:last-child { margin-bottom: 0; }
+
+.bank-note { padding: 10px 14px; border-radius: var(--radius); background: var(--surface-2); font-size: .92rem; font-weight: 600; }
+.bank-note.wrong { background: var(--danger-soft); color: var(--danger); }
+.bank-note.ok { background: var(--success-soft); color: var(--success); }
+.run-actions { margin-top: 6px; }
+.nav-row { margin-bottom: 0; }
+.nav-row > .btn { flex: 1 1 120px; }
+
+/* ---------- შედეგი ---------- */
+.result-hero { text-align: center; }
+.result-hero .big { font-size: 3.2rem; font-weight: 800; line-height: 1.1; }
+.result-hero .sub { font-weight: 700; margin-bottom: 8px; }
+.result-hero .stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; font-size: .9rem; color: var(--muted); }
+
+/* ---------- შეცდომები ---------- */
+.m-q { font-size: .94rem; line-height: 1.45; margin-bottom: 4px; }
+.mistake-row .badge { font-size: .72rem; padding: 1px 8px; }
+.streak { color: var(--primary); font-weight: 600; }
 
 /* რიჩ-ტექსტი კონტენტიდან */
 .rich p:last-child, .rich ul:last-child { margin-bottom: 0; }

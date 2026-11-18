@@ -14,10 +14,18 @@ import { renderChapter } from './views/chapter.js';
 import { renderLibrary } from './views/library.js';
 import { renderPdfViewer } from './views/pdfviewer.js';
 import { renderSettings } from './views/settings.js';
+import { renderPractice } from './views/practice.js';
+import { renderRun } from './views/run.js';
+import { renderResult } from './views/result.js';
+import { renderMistakes } from './views/mistakes.js';
 
 /* ---------- მარშრუტები ---------- */
 route('/', renderChapters, { nav: 'home' });
 route('/chapter/:id', renderChapter, { nav: 'home' });
+route('/practice', renderPractice, { nav: 'practice' });
+route('/run/:id', renderRun, { nav: 'practice' });
+route('/result/:id', renderResult, { nav: 'practice' });
+route('/mistakes', renderMistakes, { nav: 'mistakes' });
 route('/pdf/:id', renderPdfViewer, { nav: 'library' });
 route('/library', renderLibrary, { nav: 'library' });
 route('/settings', renderSettings, { nav: 'settings' });

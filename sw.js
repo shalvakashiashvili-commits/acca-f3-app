@@ -7,7 +7,7 @@
    და გაზარდე VERSION — სხვაგვარად ტელეფონი ძველ ვერსიას დაიტოვებს.
    ========================================================= */
 
-const VERSION = 'v0.1.0';
+const VERSION = 'v0.2.0';
 const CACHE = `acca-f3-${VERSION}`;
 
 const ASSETS = [
@@ -29,6 +29,16 @@ const ASSETS = [
   'js/core/stats.js',
   'js/core/progress.js',
   'js/core/demo.js',
+  'js/core/clock.js',
+  'js/core/scoring.js',
+  'js/core/mistakes.js',
+  'js/core/picker.js',
+  'js/core/session.js',
+  'js/ui/question.js',
+  'js/views/practice.js',
+  'js/views/run.js',
+  'js/views/result.js',
+  'js/views/mistakes.js',
   'js/views/chapters.js',
   'js/views/chapter.js',
   'js/views/library.js',

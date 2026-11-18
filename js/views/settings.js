@@ -7,7 +7,7 @@
 import { setHeader } from '../router.js';
 import { T } from '../strings.ka.js';
 import { getSetting, setSetting } from '../db.js';
-import { fmtBytes } from '../ui/components.js';
+import { fmtBytes, toast } from '../ui/components.js';
 import { applyTheme } from '../ui/theme.js';
 import { APP_VERSION } from '../config.js';
 
@@ -24,6 +24,14 @@ export async function renderSettings(el) {
       ${['system', 'light', 'dark'].map((k) => `<button data-t="${k}" class="${theme === k ? 'on' : ''}">${T.settings['theme' + k[0].toUpperCase() + k.slice(1)]}</button>`).join('')}
     </div>
 
+    <div class="section-title">${T.settings.practice}</div>
+    <div class="card">
+      <label class="field"><span>${T.settings.mistakeShare}</span>
+        <input type="number" id="mistake-share" inputmode="numeric" min="0" max="100" step="5" value="${await getSetting('mistakeShare')}">
+      </label>
+      <p class="muted"><small>${T.settings.mistakeShareHint}</small></p>
+    </div>
+
     <div class="section-title">${T.settings.storage}</div>
     <div class="card">
       ${est ? `<p>${T.library.storage(fmtBytes(est.usage), fmtBytes(est.quota))}</p>` : ''}
@@ -32,6 +40,13 @@ export async function renderSettings(el) {
     </div>
 
     <p class="muted" style="text-align:center"><small>${T.settings.version}: ${APP_VERSION}</small></p>`;
+
+  el.querySelector('#mistake-share').onchange = async (e) => {
+    const v = Math.min(100, Math.max(0, Math.round(Number(e.target.value) || 0)));
+    e.target.value = v;
+    await setSetting('mistakeShare', v);
+    toast(T.study.saved);
+  };
 
   el.querySelector('#theme').onclick = async (e) => {
     const b = e.target.closest('[data-t]');
