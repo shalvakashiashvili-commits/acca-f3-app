@@ -13,6 +13,8 @@ import { getSetting, setSetting, DEFAULT_SETTINGS } from '../db.js';
 import { esc, toast, fmtDate, fmtDuration, confirmDialog } from '../ui/components.js';
 import { examPlan, buildExam, examRemaining } from '../core/exam.js';
 import { createSession, inProgressSessions, finishedSessions, deleteSession } from '../core/session.js';
+import { normalizeSources } from '../core/picker.js';
+import { sourceChipsHtml, toggleSource, syncSourceChips, sourceLabel } from '../ui/source.js';
 
 export async function renderExam(el) {
   setHeader(T.exam.title, { back: true });
@@ -20,14 +22,11 @@ export async function renderExam(el) {
     getSetting('exam'), getSetting('examStrict'), getSetting('examChoice'),
     inProgressSessions(['exam']), finishedSessions(['exam']),
   ]);
-  const f = { variant: 'full', source: 'both', ...(saved || {}) };
+  const f = { variant: 'full', source: null, ...(saved || {}) };
+  f.source = normalizeSources(f.source); // ძველი შენახული 'app' | 'kit' | 'both' → ახალი ფორმატი
   Object.assign(cfg, { ...DEFAULT_SETTINGS.exam, ...cfg }); // ძველ ჩანაწერს ახალი ველები ევსება
   const plans = { full: examPlan(cfg, 'full'), mini: examPlan(cfg, 'mini') };
 
-  const seg = (name, items, cur) => `
-    <div class="segmented" data-seg="${name}">
-      ${items.map(([v, label]) => `<button data-v="${v}" class="${cur === v ? 'on' : ''}">${label}</button>`).join('')}
-    </div>`;
 
   el.innerHTML = `
     ${pending.map((p) => `
@@ -51,7 +50,7 @@ export async function renderExam(el) {
     </div>
 
     <div class="section-title">${T.exam.source}</div>
-    ${seg('source', [['app', T.source.app], ['kit', T.source.kit], ['both', T.practice.both]], f.source)}
+    ${sourceChipsHtml(f.source)}
 
     <div class="section-title">${T.exam.timer}</div>
     <div class="card">
@@ -116,6 +115,13 @@ export async function renderExam(el) {
       updateInfo();
       return;
     }
+    if (b.dataset.src) {
+      f.source = toggleSource(f.source, b.dataset.src);
+      syncSourceChips(el, f.source);
+      await setSetting('examChoice', f);
+      updateInfo();
+      return;
+    }
     if (b.dataset.drop) {
       if (await confirmDialog(T.exam.confirmDrop, { danger: true, okLabel: T.common.delete })) {
         await deleteSession(Number(b.dataset.drop));
@@ -146,7 +152,6 @@ export async function renderExam(el) {
   await updateInfo();
 }
 
-const sourceLabel = (s) => (s === 'app' ? T.source.app : s === 'kit' ? T.source.kit : T.practice.both);
 
 /**
  * ქულების დინამიკა — მარტივი ხაზოვანი გრაფიკი (SVG, ბოლო 20 გამოცდა).

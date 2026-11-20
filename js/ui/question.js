@@ -13,11 +13,11 @@ import { parseNumeric, maxMarks } from '../core/scoring.js';
 
 const LETTERS = 'ABCDEFGHIJ';
 
-/** წყაროს ნიშანი: „აპლიკაცია“ ან „კრებული #12“ */
+/** წყაროს ნიშანი: „აპლიკაცია“, „კრებული #12“ ან „წიგნი · პრაქტიკული 7“ */
 export function sourceBadge(q) {
-  return q.source === 'kit'
-    ? `<span class="badge kit">${T.source.kit}${q.kit_ref ? ' #' + esc(q.kit_ref) : ''}</span>`
-    : `<span class="badge">${T.source.app}</span>`;
+  if (q.source === 'kit') return `<span class="badge kit">${T.source.kit}${q.kit_ref ? ' #' + esc(q.kit_ref) : ''}</span>`;
+  if (q.source === 'book') return `<span class="badge book">${T.source.book}${q.kit_ref ? ' · ' + esc(q.kit_ref) : ''}</span>`;
+  return `<span class="badge">${T.source.app}</span>`;
 }
 
 /**

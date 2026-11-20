@@ -7,7 +7,7 @@
    და გაზარდე VERSION — სხვაგვარად ტელეფონი ძველ ვერსიას დაიტოვებს.
    ========================================================= */
 
-const VERSION = 'v1.0.1';
+const VERSION = 'v1.1.0';
 const CACHE = `acca-f3-${VERSION}`;
 
 const ASSETS = [
@@ -48,6 +48,7 @@ const ASSETS = [
   'js/core/dashboard.js',
   'js/core/backup.js',
   'js/ui/card.js',
+  'js/ui/source.js',
   'js/views/cards.js',
   'js/views/metro.js',
   'js/views/chapters.js',

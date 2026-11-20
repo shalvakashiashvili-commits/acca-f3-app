@@ -9,7 +9,7 @@
 
 const Q_TYPES = ['mcq', 'multi', 'numeric', 'fill', 'mtq'];
 const PART_TYPES = ['mcq', 'multi', 'numeric', 'fill']; // mtq-ის ნაწილები
-const SOURCES = ['app', 'kit'];
+const SOURCES = ['app', 'kit', 'book']; // აპლიკაცია, კრებული (Exam Kit), წიგნი (სავარჯიშოები და პრაქტიკული კითხვები)
 const MAX_ERRORS = 40;
 
 const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
@@ -123,8 +123,9 @@ export function validateChapterFile(data) {
         else if (seen.has(q.id)) err(p, `id „${q.id}“ ფაილში მეორდება`);
         else seen.add(q.id);
 
-        if (!SOURCES.includes(q.source)) err(p, '"source" უნდა იყოს "app" ან "kit"');
+        if (!SOURCES.includes(q.source)) err(p, '"source" უნდა იყოს "app", "kit" ან "book"');
         if (q.source === 'kit' && !str(q.kit_ref)) warn(p, 'source = "kit", მაგრამ "kit_ref" (კრებულის ნომერი) არ არის მითითებული');
+        if (q.source === 'book' && !str(q.kit_ref)) warn(p, 'source = "book", მაგრამ "kit_ref" (მაგ. „სავარჯიშო 2“ ან „პრაქტიკული 7“) არ არის მითითებული');
         if ('difficulty' in q && (!isInt(q.difficulty) || q.difficulty < 1 || q.difficulty > 5)) err(p, '"difficulty" უნდა იყოს მთელი რიცხვი 1-დან 5-მდე');
         optStr(q, 'explanation_ka', p, err);
 

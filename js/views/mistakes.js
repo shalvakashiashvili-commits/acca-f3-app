@@ -62,7 +62,7 @@ export async function renderMistakes(el) {
     const b = e.target.closest('[data-practice]');
     if (!b) return;
     const v = b.dataset.practice;
-    startPractice({ mode: 'quiz', mistakesOnly: true, count: 0, chapterIds: v === 'all' ? null : [Number(v)], source: 'both' });
+    startPractice({ mode: 'quiz', mistakesOnly: true, count: 0, chapterIds: v === 'all' ? null : [Number(v)], source: null });
   });
 }
 

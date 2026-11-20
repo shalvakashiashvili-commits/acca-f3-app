@@ -75,17 +75,17 @@ export async function renderLibrary(el) {
 
     const counts = new Map();
     questions.forEach((q) => {
-      const c = counts.get(q.chapterId) || { app: 0, kit: 0 };
+      const c = counts.get(q.chapterId) || { app: 0, kit: 0, book: 0 };
       c[q.source] = (c[q.source] || 0) + 1;
       counts.set(q.chapterId, c);
     });
     el.querySelector('#chapter-list').innerHTML = chapters.length ? chapters.map((c) => {
-      const n = counts.get(c.id) || { app: 0, kit: 0 };
+      const n = counts.get(c.id) || { app: 0, kit: 0, book: 0 };
       return `
         <div class="list-row">
           <div class="grow">
             <a class="name" href="#/chapter/${c.id}">${esc(chTitle(c))}</a><br>
-            <small class="muted">${T.source.app}: ${n.app} · ${T.source.kit}: ${n.kit} · ${(c.flashcards || []).length} 🃏 · ${fmtDate(c.importedAt)}</small>
+            <small class="muted">${T.source.app}: ${n.app} · ${T.source.kit}: ${n.kit} · ${T.source.book}: ${n.book} · ${(c.flashcards || []).length} 🃏 · ${fmtDate(c.importedAt)}</small>
           </div>
           <button class="icon-btn" data-del-ch="${c.id}" aria-label="${T.library.deleteChapter}">${ICON.trash}</button>
         </div>`;

@@ -106,7 +106,6 @@ export const T = {
     chapters: 'თავები',
     allChapters: 'ყველა',
     source: 'წყარო',
-    both: 'ორივე',
     difficulty: 'სირთულე',
     diffAll: 'ყველა',
     count: 'კითხვების რაოდენობა',
@@ -257,7 +256,7 @@ export const T = {
 
   status: { new: 'არ დაწყებული', progress: 'მიმდინარე', done: 'დასრულებული' },
 
-  source: { app: 'აპლიკაცია', kit: 'კრებული' },
+  source: { app: 'აპლიკაცია', kit: 'კრებული', book: 'წიგნი', all: 'ყველა', allLong: 'ყველა წყარო' },
 
   chapters: {
     title: 'თავები',

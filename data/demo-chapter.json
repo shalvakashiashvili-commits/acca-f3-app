@@ -193,6 +193,30 @@
       "explanation_ka": "შემოსავალი = მიღებული + გახსნის deferred income − დახურვის deferred income = 18 000 + 2 000 − 3 000 = 17 000. გახსნის ნაშთი ამ წელს გამომუშავდა, დახურვისა — მომავალ წელს ეკუთვნის."
     },
     {
+      "id": "demo-book-001",
+      "source": "book",
+      "kit_ref": "სავარჯიშო 1",
+      "type": "mcq",
+      "difficulty": 1,
+      "question_en": "Insurance of $1,200 for the year to 31 March 20X6 was paid on 1 April 20X5. The entity's year end is 31 December 20X5. How should the payment be shown in the statement of financial position at 31 December 20X5?",
+      "options": ["Prepayment of $300", "Accrual of $300", "Prepayment of $900", "Accrual of $900"],
+      "correct": [0],
+      "marks": 2,
+      "explanation_ka": "გადახდა ფარავს 12 თვეს (აპრილი–მარტი). 31 დეკემბრისთვის დარჩენილია 3 თვე (იანვარი–მარტი): 1 200 × 3/12 = 300. ეს წინასწარ გადახდილი თანხაა — მიმდინარე აქტივი (prepayment).",
+      "why_wrong_ka": ["", "თანხა უკვე გადახდილია, ამიტომ ვალდებულება (accrual) არ არის.", "900 არის ამ წლის ხარჯი (9 თვე), არა დარჩენილი ნაწილი.", "გადახდილი თანხა ვალდებულება ვერ იქნება, თან 900 ამ წლის ხარჯია."]
+    },
+    {
+      "id": "demo-book-002",
+      "source": "book",
+      "kit_ref": "პრაქტიკული 1",
+      "type": "numeric",
+      "difficulty": 2,
+      "question_en": "During the year ended 31 December 20X5 an entity paid $4,600 for electricity. At 1 January 20X5 there was an accrual of $500 and at 31 December 20X5 there was an accrual of $800. What is the electricity expense for the year ($)?",
+      "correct": [4900],
+      "marks": 2,
+      "explanation_ka": "ხარჯი = გადახდილი − გახსნის accrual + დახურვის accrual = 4 600 − 500 + 800 = 4 900. გახსნის accrual წინა წლის ხარჯი იყო (ამ წელს მხოლოდ გადავიხადეთ), დახურვის accrual ამ წლის ხარჯია, რომელიც ჯერ არ გადაგვიხდია."
+    },
+    {
       "id": "demo-app-mtq-001",
       "source": "app",
       "type": "mtq",

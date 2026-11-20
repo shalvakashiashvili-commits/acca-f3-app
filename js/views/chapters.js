@@ -103,7 +103,7 @@ function chapterItem(r) {
       </div>
       <div class="meta">
         ${statusBadge(r.status)}
-        <span>${r.total} ${T.chapters.questions}${r.total ? ` · ${T.source.app} ${r.appCount} / ${T.source.kit} ${r.kitCount}` : ''}</span>
+        <span>${r.total} ${T.chapters.questions}${r.total ? ' · ' + [['app', r.appCount], ['kit', r.kitCount], ['book', r.bookCount]].filter(([, n]) => n).map(([s, n]) => `${T.source[s]} ${n}`).join(' / ') : ''}</span>
       </div>
       ${r.sectionsTotal ? `<div class="bar" title="${T.study.seenOf(r.seen, r.sectionsTotal)}"><i style="width:${seenPct}%"></i></div>` : ''}
     </a>`;

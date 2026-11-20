@@ -75,6 +75,7 @@ export async function loadChaptersWithStatus() {
         qs,
         appCount: qs.filter((q) => q.source === 'app').length,
         kitCount: qs.filter((q) => q.source === 'kit').length,
+        bookCount: qs.filter((q) => q.source === 'book').length,
         ...chapterStatus(ch, progMap.get(ch.id), qs, statsMap),
       };
     });

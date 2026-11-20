@@ -141,6 +141,7 @@ body.no-nav main { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
 .badge.progress { background: var(--warning-soft); color: var(--warning); }
 .badge.done { background: var(--success-soft); color: var(--success); }
 .badge.kit { background: var(--primary-soft); color: var(--primary); }
+.badge.book { background: var(--memo-bg); color: var(--text); box-shadow: inset 0 0 0 1px var(--memo-border); }
 
 .bar { height: 6px; border-radius: 99px; background: var(--surface-2); overflow: hidden; margin-top: 10px; }
 .bar > i { display: block; height: 100%; background: var(--primary); border-radius: inherit; }

@@ -8,7 +8,8 @@ import { setHeader, navigate } from '../router.js';
 import { T } from '../strings.ka.js';
 import { S, getAll, getSetting, setSetting } from '../db.js';
 import { esc, toast, fmtDate, confirmDialog } from '../ui/components.js';
-import { pickQuestions } from '../core/picker.js';
+import { pickQuestions, normalizeSources } from '../core/picker.js';
+import { sourceChipsHtml, toggleSource, syncSourceChips } from '../ui/source.js';
 import { createSession, inProgressSessions, deleteSession } from '../core/session.js';
 
 const COUNTS = [5, 10, 20, 30, 0]; // 0 = ყველა
@@ -22,9 +23,10 @@ export async function renderPractice(el, _params, query) {
 
   // პარამეტრები: შენახული → URL-ით გადმოცემული (?ch=, ?mistakes=)
   const f = {
-    mode: 'quiz', chapterIds: null, source: 'both', difficulty: 'all', count: 10, mistakesOnly: false,
+    mode: 'quiz', chapterIds: null, source: null, difficulty: 'all', count: 10, mistakesOnly: false,
     ...(saved || {}),
   };
+  f.source = normalizeSources(f.source); // ძველი შენახული 'app' | 'kit' | 'both' → ახალი ფორმატი
   if (query.ch) f.chapterIds = query.ch.split(',').map(Number);
   if (query.mistakes) f.mistakesOnly = true;
   // არარსებული თავები სიიდან ამოვიღოთ
@@ -77,7 +79,7 @@ export async function renderPractice(el, _params, query) {
     </div>
 
     <div class="section-title">${T.practice.source}</div>
-    ${seg('source', [['app', T.source.app], ['kit', T.source.kit], ['both', T.practice.both]], f.source)}
+    ${sourceChipsHtml(f.source)}
 
     <div class="section-title">${T.practice.difficulty}</div>
     ${seg('difficulty', [['all', T.practice.diffAll], ['easy', '1–2'], ['medium', '3'], ['hard', '4–5']], f.difficulty)}
@@ -115,6 +117,12 @@ export async function renderPractice(el, _params, query) {
       const name = segEl.dataset.seg;
       f[name] = name === 'count' ? Number(b.dataset.v) : b.dataset.v;
       segEl.querySelectorAll('button').forEach((x) => x.classList.toggle('on', x === b));
+      updateInfo();
+      return;
+    }
+    if (b.dataset.src) {
+      f.source = toggleSource(f.source, b.dataset.src);
+      syncSourceChips(el, f.source);
       updateInfo();
       return;
     }
@@ -156,7 +164,8 @@ export async function renderPractice(el, _params, query) {
 /** სხვა ეკრანებიდან: ვარჯიში ახალი პარამეტრებით (მაგ. „ივარჯიშე მხოლოდ შეცდომებზე“) */
 export async function startPractice(filters) {
   const share = await getSetting('mistakeShare');
-  const f = { mode: 'quiz', chapterIds: null, source: 'both', difficulty: 'all', count: 10, mistakesOnly: false, ...filters };
+  const f = { mode: 'quiz', chapterIds: null, source: null, difficulty: 'all', count: 10, mistakesOnly: false, ...filters };
+  f.source = normalizeSources(f.source);
   const r = await pickQuestions(f, { mistakeShare: share });
   if (!r.ids.length) { toast(T.practice.nothing, { type: 'error' }); return null; }
   const s = await createSession(f.mode, f, r.ids);

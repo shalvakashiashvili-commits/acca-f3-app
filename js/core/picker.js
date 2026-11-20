@@ -3,7 +3,9 @@
 
    ფილტრები:
      chapterIds  — [1, 3] ან null (ყველა თავი)
-     source      — 'app' | 'kit' | 'both'
+     source      — არჩეული წყაროების მასივი ['app', 'kit', 'book'] ან null (ყველა).
+                   ძველი შენახული მნიშვნელობები ('app' | 'kit' | 'both') იმუშავებს:
+                   იხ. normalizeSources
      difficulty  — 'all' | 'easy' (1–2) | 'medium' (3) | 'hard' (4–5)
      count       — კითხვების რაოდენობა (0 = ყველა შესაფერისი)
      mistakesOnly — მხოლოდ ბანკში მყოფი შეცდომები
@@ -26,11 +28,28 @@ export const DIFFICULTY = {
   hard: (d) => d >= 4,
 };
 
+/** კითხვის წყაროები: აპლიკაცია, კრებული (Exam Kit), წიგნი */
+export const SOURCES = ['app', 'kit', 'book'];
+
+/**
+ * წყაროს ფილტრის ნორმალიზება → მასივი ან null (= ყველა წყარო).
+ *   ['kit', 'book'] → ['kit', 'book'];  'kit' → ['kit'] (ძველი ფორმატი)
+ *   'both' / undefined / [] / სამივე → null
+ */
+export function normalizeSources(source) {
+  let arr;
+  if (Array.isArray(source)) arr = source;
+  else if (SOURCES.includes(source)) arr = [source];
+  else return null;
+  arr = SOURCES.filter((s) => arr.includes(s)); // სტაბილური თანმიმდევრობა, უცნობის გარეშე
+  return arr.length && arr.length < SOURCES.length ? arr : null;
+}
+
 /** კითხვა აკმაყოფილებს თუ არა თავისა და წყაროს ფილტრს */
 export function matchesScope(q, { chapterIds, source }) {
   if (chapterIds && chapterIds.length && !chapterIds.includes(q.chapterId)) return false;
-  if (source === 'app' || source === 'kit') return q.source === source;
-  return true;
+  const src = normalizeSources(source);
+  return !src || src.includes(q.source || 'app');
 }
 
 /**
